@@ -12,7 +12,6 @@ $RegistryValue = "72" #Skriv inn ønsket "Data Value"
 					
 ##Install pre-reqs x64##
 Start-Process msiexec.exe -Wait -ArgumentList '/i sqlncli.msi /qb! /l*v C:\Windows\Temp\SQLCLIx64.log IACCEPTSQLNCLILICENSETERMS=YES' -Verbose
-
 Start-Process .\vcredist_x64_2005.exe /Q -Verbose -Wait
 Start-Process .\vcredist_x64_2008.exe /Q -Verbose -Wait
 Start-Process .\vcredist_x64_2010.exe /Q -Verbose -Wait
@@ -31,7 +30,7 @@ Copy-Item $copy -Destination $path1 -Force -Verbose
 
 ##Create Detection Method for SCCM##
 					
-New-Item -Path $RegistryPath -ErrorAction SilentlyContinue -Force
+New-Item -Path $RegistryPath -ErrorAction SilentlyContinue -Force -Verbose
 New-ItemProperty    -Path $RegistryPath `
                     -Name $RegistryName `
                     -Value $RegistryValue `
@@ -39,13 +38,13 @@ New-ItemProperty    -Path $RegistryPath `
                     -Force | Out-Null
 
 ##CleanUP VCREDIST Files##
-Get-ChildItem C:\ -Force -Filter eula* | Where-Object {!$_.PSIsContainer} | Remove-Item
-Get-ChildItem C:\ -Force -Filter install.res* | Where-Object {!$_.PSIsContainer} | Remove-Item
-Get-ChildItem C:\ -Force -Filter VC_RED* | Where-Object {!$_.PSIsContainer} | Remove-Item
-Remove-Item C:\install.exe
-Remove-Item C:\install.ini
-Remove-Item C:\msdia80.dll
-Remove-Item C:\vcredist.bmp
-Remove-Item C:\globdata.ini
+Get-ChildItem C:\ -Force -Filter eula* | Where-Object {!$_.PSIsContainer} | Remove-Item -Verbose
+Get-ChildItem C:\ -Force -Filter install.res* | Where-Object {!$_.PSIsContainer} | Remove-Item -Verbose
+Get-ChildItem C:\ -Force -Filter VC_RED* | Where-Object {!$_.PSIsContainer} | Remove-Item -Verbose
+Remove-Item C:\install.exe -Verbose
+Remove-Item C:\install.ini -Verbose
+Remove-Item C:\msdia80.dll -Verbose
+Remove-Item C:\vcredist.bmp -Verbose
+Remove-Item C:\globdata.ini -Verbose
 
 
