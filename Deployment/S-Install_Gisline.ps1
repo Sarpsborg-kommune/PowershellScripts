@@ -20,7 +20,7 @@ Start-Process .\vcredist_x64_2015.exe /Q -Verbose -Wait
 Start-Process .\vcredist_x64_2017.exe /Q -Verbose -Wait
 
 ##Install Gisline with custom modules##
-Start-Process msiexec.exe -Wait -ArgumentList '/i GISLINEInstallasjon.msi ADDLOCAL=GISLINE,GISLINETrans,GISLINEPlanregister,GISLINEKOFEdit,GISLINERaster /qb! /norestart ' -Verbose
+Start-Process msiexec.exe -Wait -ArgumentList '/i GISLINEInstallasjon.msi ADDLOCAL=GISLINE,GISLINEFellesfiler,GISLINETrans,GISLINEPlanregister,GISLINEKOFEdit,GISLINERaster /qb! /norestart ' -Verbose
 
 ##Install Gisline Patch##
 #Start-Process msiexec.exe -Wait -ArgumentList '/i GISLINE_7.1.1.msp /passive /norestart /l*v C:\Windows\Temp\GislineInstall_Patchx64.log' -Verbose

@@ -1,16 +1,14 @@
 ##Variabler##
-$LogPath = 'C:\Windows\Temp\'                
-$
-$RegistryPath = "HKLM:\SOFTWARE\Sarpsborg kommune\software" #Pek til ønsket lokasjon i registry
-$RegistryName = "SoftwareIsInstalled" #Skriv inn ønsket navn på "Value".
+$LogPath = 'C:\Windows\Temp\Cura.log'                
+$RegistryPath = "HKLM:\SOFTWARE\Sarpsborg kommune\Ultimaker" #Pek til ønsket lokasjon i registry
+$RegistryName = "CuraIsInstalled" #Skriv inn ønsket navn på "Value".
 $RegistryValue = "1" #Skriv inn ønsket "Data Value"
 
 #Start Logging			
 Start-Transcript -Path $LogPath
 
 ##Install Software##
-Start-Process .\software.exe -Wait -ArgumentList '/configure O365_With_OneNote2016_x86.xml' -Verbose #Denne benyttes for .exe
-Start-Process msiexec.exe -Wait -ArgumentList '/i sqlncli.msi /qb! /l*v C:\Windows\Temp\SQLCLIx64.log IACCEPTSQLNCLILICENSETERMS=YES' -Verbose #Denne benyttes for .msi / msp filer
+Start-Process .\Ultimaker_Cura-4.3.0-win64.exe -Wait -ArgumentList '/S' -Verbose
 					
 ## Create Detection Method for SCCM ##
 New-Item -Path $RegistryPath -ErrorAction SilentlyContinue -Verbose
