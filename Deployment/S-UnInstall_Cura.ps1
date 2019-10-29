@@ -5,7 +5,7 @@
 
 ##Variabler##
 $RegistryPath = "HKLM:\SOFTWARE\Sarpsborg kommune\Ultimaker" #Pek til ønsket lokasjon i registry
-$RegistryName = "GCuraIsInstalled" #Skriv inn ønsket navn på "Value".
+$RegistryName = "CuraIsInstalled" #Skriv inn ønsket navn på "Value".
 					
 ##UnInstall Gisline##
 Start-Process 'C:\Program Files\Ultimaker Cura 4.3\Uninstall.exe' -Wait -ArgumentList '/S' -Verbose

@@ -1,5 +1,5 @@
 ##Variabler##
-$LogPath = 'C:\Windows\Temp\'                
+$LogPath = 'C:\Windows\Temp\Office365.log'                
 $
 $RegistryPath = "HKLM:\SOFTWARE\Sarpsborg kommune\software" #Pek til ønsket lokasjon i registry
 $RegistryName = "SoftwareIsInstalled" #Skriv inn ønsket navn på "Value".
