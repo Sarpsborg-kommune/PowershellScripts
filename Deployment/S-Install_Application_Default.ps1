@@ -13,7 +13,7 @@ Start-Process .\software.exe -Wait -ArgumentList '/configure O365_With_OneNote20
 Start-Process msiexec.exe -Wait -ArgumentList '/i sqlncli.msi /qb! /l*v C:\Windows\Temp\SQLCLIx64.log IACCEPTSQLNCLILICENSETERMS=YES' -Verbose #Denne benyttes for .msi / msp filer
 					
 ## Create Detection Method for SCCM ##
-New-Item -Path $RegistryPath -ErrorAction SilentlyContinue -Verbose
+New-Item -Path $RegistryPath -ErrorAction SilentlyContinue -Verbose -Force
 New-ItemProperty    -Path $RegistryPath `
                     -Name $RegistryName `
                     -Value $RegistryValue `
