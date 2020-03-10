@@ -44,6 +44,5 @@ New-ItemProperty    -Path $RegistryPath `
                     -Force | Out-Null
 
 
-
 ##Stop Logging##
 Stop-Transcript
