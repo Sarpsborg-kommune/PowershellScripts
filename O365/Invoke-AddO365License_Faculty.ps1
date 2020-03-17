@@ -1,6 +1,6 @@
 ﻿Import-Module ActiveDirectory
-$groupname = 'GG_M365_Lisens_Oppvekst_Ansatte'
-$users = Get-ADUser -Filter * -SearchBase "OU=Kommuneområde oppvekst,OU=Sarpsborg kommune,OU=Interne,OU=Alle brukere,DC=sarpsborg,DC=com"
+$groupname = 'NAME OF AD GRP'
+$users = Get-ADUser -Filter * -SearchBase "LINK TO OU"
 foreach($user in $users)
 {
   Add-ADGroupMember -Identity $groupname -Members $user.samaccountname -ErrorAction SilentlyContinue
@@ -9,7 +9,7 @@ foreach($user in $users)
 $members = Get-ADGroupMember -Identity $groupname
 foreach($member in $members)
 {
-  if($member.distinguishedname -notlike "*OU=Kommuneområde oppvekst,OU=Sarpsborg kommune,OU=Interne,OU=Alle brukere,DC=sarpsborg,DC=com*")
+  if($member.distinguishedname -notlike "*LINK TO OU*")
   {
     Remove-ADGroupMember -Identity $groupname -Member $member.samaccountname -Confirm:$false
   }
